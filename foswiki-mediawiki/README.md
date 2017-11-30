@@ -1,16 +1,16 @@
-<pre>
-Script to migrate FOSWIKI text into MediaWiki text
+# Script to migrate FOSWIKI text into MediaWiki text
 
 Change top variables to location of FOSWIKI flat files and directory used for output.
 
-Must change these variables:
+**Must change these variables:**
+```Shell
 FOSWIKI_SOURCE
 FOSWIKI_TEXT
 FOSWIKI_IMAGES
 WORKING_DIR
+```
 
-
-Migrates:
+## Migrates:
 Headings
 Bullets
 verbatim tags
@@ -18,9 +18,10 @@ img tags and copies images
 TOC wiki text
 http(s) links
 Numbered bullets
-TODO: Tables
+**TODO: Tables**
 
 Search and Replace Psuedo code:
+```
  "---+++" -> "==== \1 ===="
  "---++ " -> "=== * ==="
  "---+ " -> "== * =="
@@ -37,4 +38,4 @@ Search and Replace Psuedo code:
 		&lt;div class="mw-collapsible mw-collapsed" id="mw-customcollapsible-myDivision"&gt;"
  "%ENDTWISTY%" -> "&lt;/div&gt;"
  "^[1-9])" -> "#"
-</pre>
+```

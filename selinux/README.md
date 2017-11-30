@@ -23,7 +23,9 @@ Whether it's a good idea to do this is unclear, but it seems
 like a better than option than completely disabling SELinux.
 
 ## How to Use
+```Shell
 selinux.add.modules.sh {logs|load|all|clean|permissive|enforcing} {host_list.txt}
+```
 host_list.txt only required on first run and before clean
 
 ### logs
