@@ -41,7 +41,7 @@ do cp $current/$file $output;
 	sed -i "s|<\/table>|\n\|}|g" $output/$file;
 	sed -i "s|<\/td> <\/tr>||g" $output/$file;
 	sed -i "s|<\/tbody>||g" $output/$file;
-	sed -i "s|<table\([^+]*\) <tbody>|{\||g" $output/$file;
+	sed -i "s|<table\([^+]*\) <tbody>|{\| class='wikitable'|g" $output/$file;
 done;
 cp -r $FOSWIKI_IMAGES/*/*.png $output/
 exit 0
