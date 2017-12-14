@@ -8,7 +8,7 @@
 FOSWIKI_SOURCE="/var/www/foswiki"
 FOSWIKI_TEXT="$FOSWIKI_SOURCE/data/GCO/"
 FOSWIKI_IMAGES="$FOSWIKI_SOURCE/pub/GCO/"
-WORKING_DIR="/home/jeffderb/wiki"
+WORKING_DIR="/home/jeffderb/scripts/linux-work/foswiki-mediawiki"
 # END CHANGES #
 
 current="$WORKING_DIR/current"
@@ -19,13 +19,13 @@ cp $FOSWIKI_TEXT/*.txt $current
 for file in `ls $current/`;
 do cp $current/$file $output;
 	echo $file
-	sed -i "s|---++++\([^']*\)|===== \1 =====|g" $output/$file;
-	sed -i "s|---+++\([^']*\)|==== \1 ====|g" $output/$file;
-	sed -i "s|---++\([^']*\)|=== \1 ===|g" $output/$file;
-	sed -i "s|---+\([^']*\)|== \1 ==|g" $output/$file;
-	sed -i "s|\s\{9\}\*\s\{1\}\([^']*\)|\*\*\*\* \1|g" $output/$file;
-	sed -i "s|\s\{6\}\*\s\{1\}\([^']*\)|\*\*\* \1|g" $output/$file;
-	sed -i "s|\s\{3\}\*\s\{1\}\([^']*\)|\*\* \1|g" $output/$file;
+	sed -i "s|---++++\([^']*\)|==== \1 ====|g" $output/$file;
+	sed -i "s|---+++\([^']*\)|=== \1 ===|g" $output/$file;
+	sed -i "s|---++\([^']*\)|== \1 ==|g" $output/$file;
+	sed -i "s|---+\([^']*\)|= \1 =|g" $output/$file;
+	sed -i "s|\s\{9\}\*\s\{1\}\([^']*\)|\*\*\* \1|g" $output/$file;
+	sed -i "s|\s\{6\}\*\s\{1\}\([^']*\)|\*\* \1|g" $output/$file;
+	sed -i "s|\s\{3\}\*\s\{1\}\([^']*\)|\* \1|g" $output/$file;
 	sed -i "s|<verbatim\([^']*\)|<pre\1|g" $output/$file;
 	sed -i "s|<\/verbatim>|<\/pre>|g" $output/$file;
 	sed -i "s|<img alt='\([^']*\)' height='\([^']*\)' src='\([^']*\)' title='\([^']*\)' width='\([^']*\)'\s\{1\}\/>|\[\[File:\1\|\4\]\]|g" $output/$file;
@@ -35,6 +35,13 @@ do cp $current/$file $output;
 	sed -i "s|\s\{1,\}\[1-9\]\s\{1\}|#|g" $output/$file;
 	sed -i "s|%META:\([^']*\)||g" $output/$file;
 	sed -i "s|%TOC%|__TOC__|g" $output/$file;
+	sed -i "s|<\/td> <td>|\|\||g" $output/$file;
+	sed -i "s| <tr> |\n\|-\n|g" $output/$file;
+	sed -i "s|<td>|\||g" $output/$file;
+	sed -i "s|<\/table>|\n\|}|g" $output/$file;
+	sed -i "s|<\/td> <\/tr>||g" $output/$file;
+	sed -i "s|<\/tbody>||g" $output/$file;
+	sed -i "s|<table\([^+]*\) <tbody>|{\||g" $output/$file;
 done;
 cp -r $FOSWIKI_IMAGES/*/*.png $output/
 exit 0
